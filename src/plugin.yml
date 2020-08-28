@@ -1,0 +1,9 @@
+name: rules
+author: HALD91
+version: 1.2.0.1
+api-version: 1.13
+main: rules.Main
+
+commands:
+  rules:
+    usage: /<command>
