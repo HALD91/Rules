@@ -1,3 +1,15 @@
+## Author: HALD91
+## Version: 1.2.0.1
+
+
+## Add your rules like the example down below: (Do not change the Rules tag)
+## To make colored text use minecraft color codes: https://www.colorschemer.com/minecraft-color-codes/
+
 Rules:
   - '&bYourServerName'
-  - '&drule1'
+  - '&dRule1'
+
+
+## Set your own prefix down below:
+Prefix:
+  - '&7&6YourPrefix&7&r'

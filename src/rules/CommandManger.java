@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandManger implements CommandExecutor {
     Main main = JavaPlugin.getPlugin(Main.class);
-    String prefix = ChatColor.GRAY + "[" + ChatColor.GOLD + "Rules" + ChatColor.GRAY + "]" + ChatColor.RESET + " ";
+    String prefix = main.getConfig().getStringList("Prefix").toString();
 
 
     @Override
@@ -24,16 +24,17 @@ public class CommandManger implements CommandExecutor {
             if (sender instanceof Player){
                 Player p1 = (Player) sender;
                 if (strings.length == 0) {
-                    for (byte b = 0; 0 < main.getConfig().getStringList("Rules").size(); b++) {
-                        sender.sendMessage(" " + main.getConfig().getStringList("Rules").get(b));
-                        return true;
-                    }
+                    for(String messages : main.getConfig().getStringList("Rules")) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messages));
+                    }return true;
+                }
+            if (strings.length == 1) {
+                    if (strings[0].equalsIgnoreCase("Reload")) {
+                        main.reloadConfig();
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + ChatColor.GREEN + " Config" + ChatColor.YELLOW + "has been reload"));
+                    }return true;
                 }
             }
-        }
-
-        return false;
-
-
+        }return false;
     }
 }
