@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements Listener {
     public FileConfiguration config = getConfig();
     public List<String> rules = config.getStringList("Rules");
+    public List<String> prefix = config.getStringList("Prefix");
 
     @Override
     public void onEnable(){

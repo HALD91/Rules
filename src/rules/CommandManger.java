@@ -11,14 +11,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandManger implements CommandExecutor {
     Main main = JavaPlugin.getPlugin(Main.class);
-    String prefix = main.getConfig().getStringList("Prefix").toString();
 
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("rules")){
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(prefix + ChatColor.RED + "This command can't be used in the console");
+                sender.sendMessage( ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()) + " " + ChatColor.RED + " This command can't be used in the console");
                 return true;
             }
             if (sender instanceof Player){
@@ -29,11 +28,32 @@ public class CommandManger implements CommandExecutor {
                     }return true;
                 }
             if (strings.length == 1) {
+                if (p1.hasPermission("rules.admin.reload"))
                     if (strings[0].equalsIgnoreCase("Reload")) {
                         main.reloadConfig();
-                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + ChatColor.GREEN + " Config" + ChatColor.YELLOW + "has been reload"));
-                    }return true;
-                }
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.RED + " " + "Config" + " " + ChatColor.GREEN + "has been reload"));
+                    }
+                if (strings[0].equalsIgnoreCase("Help")) {
+                    if (p1.hasPermission("rules.admin.Help"))
+                        p1.sendMessage(ChatColor.GRAY + "------------------------" + " " + ChatColor.GOLD + "Help" + " " + ChatColor.GRAY + "-----------------------");
+                        p1.sendMessage(" ");
+                        p1.sendMessage(ChatColor.GREEN + "/Rules" + ChatColor.AQUA + " " + "To se all Rules");
+                        p1.sendMessage(ChatColor.GREEN + "/Rules help" + ChatColor.AQUA + " " + "To get help on how to use this plugin");
+                        p1.sendMessage(ChatColor.GREEN + "/Rules SetPrefix <YourPrefix>" + " " + ChatColor.AQUA + "To set your own prefix for this plugin");
+                        p1.sendMessage(" ");
+                        p1.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+                    } return true;
+            }
+            if (strings.length == 2){
+                if (p1.hasPermission("rules.admin.setprefix"))
+                    if (strings[0].equalsIgnoreCase("SetPrefix")){
+                        if (!strings[1].isEmpty()){
+                            main.getConfig().set("Prefix", strings[1]);
+                            main.saveConfig();
+                            p1.sendMessage(ChatColor.GREEN + "Your new prefix" + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString()));
+                        }
+                    } return true;
+            }
             }
         }return false;
     }

@@ -1,15 +1,21 @@
-## Author: HALD91
-## Version: 1.2.0.1
+###########################
+#####                 #####
+####                   ####
+###   Author: HALD91    ###
+###   Version: 1.2.0.1  ###
+####                   ####
+#####                 #####
+###########################
 
-
-## Add your rules like the example down below: (Do not change the Rules tag)
 ## To make colored text use minecraft color codes: https://www.colorschemer.com/minecraft-color-codes/
+## Add your rules like the example down below: (Do not change the Rules tag)
 
 Rules:
-  - '&bYourServerName'
   - '&dRule1'
+  - '&dRule2'
 
 
-## Set your own prefix down below:
-Prefix:
-  - '&7&6YourPrefix&7&r'
+
+## Set your own prefix ingame by using the command /rules setprefix <YourPrefix> or down below and use /Rules Reload ingame:
+
+Prefix: '&7&6YourPrefix&7&r'
