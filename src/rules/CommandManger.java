@@ -34,15 +34,28 @@ public class CommandManger implements CommandExecutor {
                         p1.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("Prefix").toString() + ChatColor.RED + " " + "Config" + " " + ChatColor.GREEN + "has been reload"));
                     }
                 if (strings[0].equalsIgnoreCase("Help")) {
-                    if (p1.hasPermission("rules.admin.Help"))
+                    if (p1.hasPermission("rules.admin.Help")) {
                         p1.sendMessage(ChatColor.GRAY + "------------------------" + " " + ChatColor.GOLD + "Help" + " " + ChatColor.GRAY + "-----------------------");
                         p1.sendMessage(" ");
-                        p1.sendMessage(ChatColor.GREEN + "/Rules" + ChatColor.AQUA + " " + "To se all Rules");
-                        p1.sendMessage(ChatColor.GREEN + "/Rules help" + ChatColor.AQUA + " " + "To get help on how to use this plugin");
-                        p1.sendMessage(ChatColor.GREEN + "/Rules SetPrefix <YourPrefix>" + " " + ChatColor.AQUA + "To set your own prefix for this plugin");
+                        p1.sendMessage(ChatColor.GRAY + "/Rules" + ChatColor.YELLOW + " " + "To se all Rules");
+                        p1.sendMessage(ChatColor.GRAY + "/Rules help" + ChatColor.YELLOW + " " + "To get help on how to use this plugin");
+                        p1.sendMessage(ChatColor.GRAY + "/Rules SetPrefix <YourPrefix>" + " " + ChatColor.YELLOW + "To set your own prefix for this plugin");
                         p1.sendMessage(" ");
                         p1.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
-                    } return true;
+                    }
+                }
+                if (strings[0].equalsIgnoreCase("Perms")) {
+                    if (p1.hasPermission("rules.admin.perms")) {
+                        p1.sendMessage(ChatColor.GRAY + "------------------------" + " " + ChatColor.GOLD + "Perms" + " " + ChatColor.GRAY + "-----------------------");
+                        p1.sendMessage(" ");
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7rules.admin.reload" + " " + "&eGives access to /Rules Reload"));
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&',"&7rules.admin.Help" + " " + "&eGives access to /Rules Help"));
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&',"&7rules.admin.perms" + " " + "&eGives access to /Rules Perms"));
+                        p1.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7rules.admin.setprefix" + "&eGives access to /Rules SetPrefix <YourPrefix>"));
+                        p1.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+                    }
+                    return true;
+                }
             }
             if (strings.length == 2){
                 if (p1.hasPermission("rules.admin.setprefix"))
