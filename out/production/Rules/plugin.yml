@@ -1,9 +1,9 @@
 name: rules
 author: HALD91
-version: 1.2.0.1
+version: 1.4.7.0
 api-version: 1.13
-main: rules.Main
+main: rules.me.HALD91.Rules
 
 commands:
   rules:
-    usage: /<command>
+  serverinfo:

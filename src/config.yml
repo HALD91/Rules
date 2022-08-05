@@ -2,7 +2,7 @@
 #####                 #####
 ####                   ####
 ###   Author: HALD91    ###
-###   Version: 1.2.0.1  ###
+###   Version: 1.4.7.0  ###
 ####                   ####
 #####                 #####
 ###########################
@@ -14,8 +14,9 @@ Rules:
   - '&dRule1'
   - '&dRule2'
 
+ServerInfo:
+  - '&eThis server is an awesome server'
+  - '&eRemember to have fun!'
 
-
-## Set your own prefix ingame by using the command /rules setprefix <YourPrefix> or down below and use /Rules Reload ingame:
-
+# Set ThePrefix here
 Prefix: '&7&6YourPrefix&7&r'
